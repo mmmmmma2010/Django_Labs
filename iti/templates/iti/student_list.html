@@ -1,0 +1,41 @@
+
+{% extends 'base.html'%}
+
+{% block content %}
+
+<!-- {{object_list}} -->
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Student</th>
+      <th scope="col">TrackName</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%  for o in object_list %}
+    <tr>
+      <th scope="row">{{o.id}}</th>
+      <td>
+        <a href="{% url 'studentdetails' o.id %}"
+          >{{o.student_name}}</a
+        >
+      </td>
+      <td>{{o.track.track_name}}</td>
+      <td>
+        <a
+          href="{% url 'studentdelete' o.id %}"
+          class="btn btn-danger"
+          >Delete</a
+        >
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+
+
+{% endblock %}
